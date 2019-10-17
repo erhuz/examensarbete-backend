@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56f9ee2c546acf34147dc9b7cefe6897",
+    "content-hash": "df8adf97740394194e08f651baa139b5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -879,6 +879,53 @@
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
+            "name": "johnstevenson/json-works",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnstevenson/json-works.git",
+                "reference": "97eca2c9956894374d41dcaf8031d123a8705100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnstevenson/json-works/zipball/97eca2c9956894374d41dcaf8031d123a8705100",
+                "reference": "97eca2c9956894374d41dcaf8031d123a8705100",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JohnStevenson\\JsonWorks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Stevenson",
+                    "email": "john-stevenson@blueyonder.co.uk"
+                }
+            ],
+            "description": "Create, edit, query and validate json",
+            "homepage": "http://github.com/johnstevenson/json-works",
+            "keywords": [
+                "builder",
+                "json",
+                "schema",
+                "validator"
+            ],
+            "time": "2016-01-05T16:23:18+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v6.2.0",
             "source": {
@@ -1622,6 +1669,63 @@
                 "php"
             ],
             "time": "2019-09-01T07:51:21+00:00"
+        },
+        {
+            "name": "opentok/opentok",
+            "version": "v4.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opentok/OpenTok-PHP-SDK.git",
+                "reference": "ebb2c566fd1b09219f23c37fcf6484ca6ae48a3d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opentok/OpenTok-PHP-SDK/zipball/ebb2c566fd1b09219f23c37fcf6484ca6ae48a3d",
+                "reference": "ebb2c566fd1b09219f23c37fcf6484ca6ae48a3d",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "^5.0",
+                "guzzlehttp/guzzle": "~6.0",
+                "johnstevenson/json-works": "~1.1",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phing/phing": "~2.16.0",
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OpenTok\\": "src/OpenTok"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributors",
+                    "homepage": "https://github.com/opentok/Opentok-PHP-SDK/graphs/contributors"
+                },
+                {
+                    "name": "Ankur Oberoi",
+                    "email": "ankur@tokbox.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OpenTok is a platform for creating real time streaming video applications, created by TokBox.",
+            "homepage": "https://github.com/opentok/Opentok-PHP-SDK",
+            "keywords": [
+                "OpenTok",
+                "TokBox",
+                "WebRTC",
+                "php",
+                "streaming",
+                "video"
+            ],
+            "time": "2019-05-02T19:45:20+00:00"
         },
         {
             "name": "opis/closure",
