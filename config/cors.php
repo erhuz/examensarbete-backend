@@ -11,8 +11,8 @@ return [
     | to accept any value.
     |
     */
-   
-    'supportsCredentials' => false,
+
+    'supportsCredentials' => true,
     'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => [],
     'allowedHeaders' => ['*'],
