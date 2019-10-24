@@ -29,9 +29,7 @@ Route::group(['middleware' => ['json.response']], function () {
     // private routes
     Route::middleware('auth:api')->group(function () {
         Route::get('/logout', 'Api\AuthController@logout')->name('logout');
-        Route::get('/user', function (Request $request) {
-            return $request->user();
-        });
+        Route::get('/user', 'Api\UserController@user');
         Route::get('/auth/test', function (Request $request)
         {
             return ['Auth' => 'Successful', 'Description' => 'If this message reached your client, it  means the authorisation worked!'];
