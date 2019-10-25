@@ -11,6 +11,9 @@ class UserController extends Controller
 
     public function user(Request $request)
     {
-        return $request->user();
+        $user = $request->user();
+        $tmp = $user->roles[0];
+
+        return $user;
     }
 }
