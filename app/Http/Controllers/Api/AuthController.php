@@ -42,7 +42,8 @@ class AuthController extends Controller
 
         $request['password']=Hash::make($request['password']);
         $user = User::create($request->toArray());
-        $user->assignRole('customer');
+
+        $user->assignRole('customer'); // Move this into a broadcastable event
 
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         $response = ['token' => $token];
