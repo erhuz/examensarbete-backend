@@ -11,6 +11,21 @@
 |
 */
 
+use App\Events\OrderStatusUpdated;
+
+class Order {
+    public $id;
+
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+}
+
 Route::get('/', function () {
-    return view('welcome');
+
+    // Implement something to broadcast
+    OrderStatusUpdated::dispatch(new Order(2));
+
+    return 'Order Dispatched';
 });
