@@ -38,6 +38,10 @@ Route::group(['middleware' => ['json.response']], function () {
         // Set current user status
         Route::post('/user/status', 'Api\UserController@setStatus');
 
+
+        Route::get('/requestcall', 'Api\CallController@requestCall');
+
+
         // Test authentication
         Route::get('/auth/test', function (Request $request)
         {
