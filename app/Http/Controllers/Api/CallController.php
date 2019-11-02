@@ -40,6 +40,12 @@ class CallController extends Controller
 
     }
 
+    /**
+     * requestCall
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function requestCall(Request $request)
     {
         $customer = Auth::user();
