@@ -60,11 +60,13 @@ class CallController extends Controller
 
         $call->save();
 
-        $response = ['call' => [
-            'id' => $call->id,
-            'customer' => $customer->name,
-            'employee' => $employee->name,
-        ]];
+        $response = [
+            'call' => [
+                'id' => $call->id,
+                'customer' => $customer->name,
+                'employee' => $employee->name,
+            ]
+        ];
 
         return response($response, 200);
     }
