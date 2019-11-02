@@ -28,11 +28,23 @@ Route::group(['middleware' => ['json.response']], function () {
 
     // private routes
     Route::middleware('auth:api')->group(function () {
+
+        // Log out current user
         Route::get('/logout', 'Api\AuthController@logout')->name('logout');
+
+        // Get current user
         Route::get('/user', 'Api\UserController@user');
+
+        // Set current user status
+        Route::post('/user/status', 'Api\UserController@setStatus');
+
+        // Test authentication
         Route::get('/auth/test', function (Request $request)
         {
-            return ['Auth' => 'Successful', 'Description' => 'If this message reached your client, it  means the authorisation worked!'];
+            return [
+                'Auth' => 'Successful',
+                'Description' => 'If this message reached your client, it  means the authorisation worked!'
+            ];
         });
     });
 
