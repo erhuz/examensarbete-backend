@@ -21,12 +21,14 @@ class UserController extends Controller
 
     public function setStatus(Request $request)
     {
+        $allowed = ['online', 'busy', 'on_break', 'offline'];
+
         $validator = Validator::make($request->all(), [
             'status' => [
                 'required',
                 'string',
                 'max:16',
-                Rule::in(['online', 'busy', 'on_break', 'offline']),
+                Rule::in($allowed),
             ],
         ]);
 
