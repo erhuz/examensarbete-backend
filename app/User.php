@@ -45,4 +45,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Define the users relation to Calls
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function calls()
+    {
+        return $this->hasMany(Call::class);
+    }
 }
