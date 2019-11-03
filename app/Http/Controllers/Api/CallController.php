@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Call;
 use App\Events\CallRequested;
+use App\Events\UserStatusUpdated;
 use OpenTok\OpenTok;
 
 class CallController extends Controller
@@ -74,6 +75,7 @@ class CallController extends Controller
         $employee->save();
 
         // Dispatch UserStatusUpdated event
+        UserStatusUpdated::dispatch($employee, $employee->status);
 
 
         return response($call, 200);
