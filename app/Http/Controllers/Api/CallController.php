@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Call;
+use App\Events\CallRequested;
 use OpenTok\OpenTok;
 
 class CallController extends Controller
@@ -66,15 +67,16 @@ class CallController extends Controller
 
         $call->save();
 
-        $response = [
-            'call' => [
-                'id' => $call->id,
-                'customer' => $customer->name,
-                'employee' => $employee->name,
-            ]
-        ];
+        // Dispatch CallRequested with call as paramater
+        CallRequested::dispatch($call);
 
-        return response($response, 200);
+        $employee->status = 'busy';
+        $employee->save();
+
+        // Dispatch UserStatusUpdated event
+
+
+        return response($call, 200);
     }
 
 
