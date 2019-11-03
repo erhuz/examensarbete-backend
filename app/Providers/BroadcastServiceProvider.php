@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Barryvdh\Cors\HandleCors;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,7 @@ class BroadcastServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Broadcast::routes();
+        Broadcast::routes(['middleware' => [HandleCors::class]]);
 
         require base_path('routes/channels.php');
     }
