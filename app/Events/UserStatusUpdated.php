@@ -14,14 +14,18 @@ class UserStatusUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $status;
+    private $user;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $status)
     {
-        //
+        $this->user = $user;
+        $this->status = $status;
     }
 
     /**
@@ -31,6 +35,6 @@ class UserStatusUpdated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('App.User.' . $this->user->id);
     }
 }
