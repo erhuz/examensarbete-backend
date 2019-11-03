@@ -28,19 +28,6 @@ class CallController extends Controller
         return $selectedEmployee;
     }
 
-    /**
-     * notifyEmployee
-     *
-     * Notify an employee of an incoming call
-     *
-     * @param \App\User $employee
-     * @param \App\Call $call
-     * @return void
-     */
-    private function notifyEmployee(User $employee, Call $call)
-    {
-
-    }
 
     /**
      * requestCall
@@ -82,4 +69,8 @@ class CallController extends Controller
     }
 
 
+    public function acceptCall(Request $request)
+    {
+        # code...
+    }
 }
