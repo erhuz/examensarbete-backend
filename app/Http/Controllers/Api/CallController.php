@@ -105,7 +105,7 @@ class CallController extends Controller
 
         // Make some modifications & method calls here
         CallAccepted::dispatch($call);
-        initializeCall($call);
+        $this->initializeCall($call);
 
         return response($call, 200);
     }
