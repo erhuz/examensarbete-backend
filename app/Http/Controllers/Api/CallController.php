@@ -69,8 +69,19 @@ class CallController extends Controller
     }
 
 
-    public function acceptCall(Request $request)
+    public function acceptCall(Request $request, Call $call)
     {
-        # code...
+        $employee = Auth::user();
+        if($employee->id !== $call->recipient_id){
+            $message = [
+                'type' => 'Error',
+                'message' => 'You are not allowed to access this endpoint'
+            ];
+            return response($message, 403);
+        }
+
+        // Make some modifications & method calls here
+
+        return response($call, 200);
     }
 }
