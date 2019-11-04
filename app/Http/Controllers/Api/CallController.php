@@ -62,7 +62,7 @@ class CallController extends Controller
         $employee->save();
 
         // Dispatch UserStatusUpdated event
-        UserStatusUpdated::dispatch($employee, $employee->status);
+        UserStatusUpdated::dispatch($employee);
 
 
         return response($call, 200);

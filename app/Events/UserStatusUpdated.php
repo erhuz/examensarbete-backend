@@ -22,10 +22,10 @@ class UserStatusUpdated implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($user, $status)
+    public function __construct($user)
     {
         $this->user = $user;
-        $this->status = $status;
+        $this->status = $user->status;
     }
 
     /**
