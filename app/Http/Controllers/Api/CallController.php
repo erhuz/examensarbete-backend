@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Call;
+use App\Events\CallAccepted;
 use App\Events\CallRequested;
 use App\Events\UserStatusUpdated;
 use OpenTok\OpenTok;
@@ -28,6 +29,28 @@ class CallController extends Controller
         return $selectedEmployee;
     }
 
+    /**
+     * initializeCall
+     *
+     * @param \App\Call $call
+     * @return void
+     */
+    private function initializeCall(Call $call)
+    {
+        # Initialize call
+        // Create OT-session
+
+        // Create employee token
+
+        // Create customer token
+
+        // Update the call
+
+        // Dispatch CallInitialized event to employee
+
+        // Dispatch CallInitialized event to customer
+
+    }
 
     /**
      * requestCall
@@ -81,6 +104,8 @@ class CallController extends Controller
         }
 
         // Make some modifications & method calls here
+        CallAccepted::dispatch($call);
+        initializeCall($call);
 
         return response($call, 200);
     }
