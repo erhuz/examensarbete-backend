@@ -34,6 +34,6 @@ class CallAccepted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('App.User.' + $this->call->caller_id);
+        return new PrivateChannel('App.User.' . $this->call->caller_id);
     }
 }
