@@ -14,14 +14,18 @@ class CallInitialized
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    private $user;
+    public $call;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($call, $user)
     {
-        //
+        $this->$call = $call;
+        $this->$user = $user;
     }
 
     /**
@@ -31,6 +35,6 @@ class CallInitialized
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('App.User.' . $this->user->id);
     }
 }
