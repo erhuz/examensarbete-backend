@@ -18,8 +18,8 @@ class CreateCallsTable extends Migration
             $table->string('session_id')->nullable();
             $table->unsignedBigInteger('caller_id');
             $table->unsignedBigInteger('recipient_id');
-            $table->string('caller_token')->nullable();
-            $table->string('recipient_token')->nullable();
+            $table->text('caller_token')->nullable();
+            $table->text('recipient_token')->nullable();
             $table->enum('status', ['active', 'inactive', 'ended'])->default('inactive');
             $table->timestamps();
         });
