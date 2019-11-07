@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Call;
 use App\Events\CallAccepted;
+use App\Events\CallInitialized;
 use App\Events\CallRequested;
 use App\Events\UserStatusUpdated;
 use OpenTok\OpenTok;
+use OpenTok\Role;
 
 class CallController extends Controller
 {
@@ -37,18 +39,41 @@ class CallController extends Controller
      */
     private function initializeCall(Call $call)
     {
+        $opentok = new OpenTok(env('OPENTOK_API_KEY'), env('OPENTOK_API_SECRET'));
+
+        $employee = User::where('id', $call->recipient_id)->first();
+        $customer = User::where('id', $call->caller_id)->first();
+
+        $employeeId = $employee->id;
+        $customerId = $customer->id;
+
         # Initialize call
         // Create OT-session
+        $session = $opentok->createSession([
+            'expireTime' => time()+(24 * 60 * 60), // in one day
+        ]);
 
         // Create employee token
+        $employeeToken = $session->generateToken([
+            'role'       => Role::MODERATOR,
+            'expireTime' => time()+(24 * 60 * 60), // in one day
+        ]);
 
         // Create customer token
+        $customerToken = $session->generateToken();
 
         // Update the call
+        $call->session_id = $session->getSessionId();
+        $call->caller_token = $customerToken;
+        $call->recipient_token = $employeeToken;
+        $call->status = 'active';
+        $call->save();
 
         // Dispatch CallInitialized event to employee
+        CallInitialized::dispatch($call, $employee);
 
         // Dispatch CallInitialized event to customer
+        CallInitialized::dispatch($call, $customer);
 
     }
 
