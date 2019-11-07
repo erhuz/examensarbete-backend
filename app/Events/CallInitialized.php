@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\Call;
+use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -22,10 +24,10 @@ class CallInitialized implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($call, $user)
+    public function __construct(Call $call, User $user)
     {
-        $this->$call = $call;
-        $this->$user = $user;
+        $this->user = $user;
+        $this->call = $call;
     }
 
     /**
