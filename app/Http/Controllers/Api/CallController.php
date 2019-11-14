@@ -11,6 +11,7 @@ use App\Events\CallAccepted;
 use App\Events\CallInitialized;
 use App\Events\CallRequested;
 use App\Events\UserStatusUpdated;
+use App\Events\EndCall;
 use OpenTok\OpenTok;
 use OpenTok\Role;
 
@@ -131,6 +132,23 @@ class CallController extends Controller
         // Make some modifications & method calls here
         CallAccepted::dispatch($call);
         $this->initializeCall($call);
+
+        return response($call, 200);
+    }
+
+    public function endCall(Request $request, Call $call)
+    {
+        $employee = Auth::user();
+        if($employee->id !== $call->recipient_id){
+            $message = [
+                'type' => 'Error',
+                'message' => 'You are not allowed to access this endpoint'
+            ];
+            return response($message, 403);
+        }
+
+        // Make some modifications & method calls here
+        EndCall::dispatch($call);
 
         return response($call, 200);
     }

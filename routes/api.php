@@ -44,6 +44,9 @@ Route::group(['middleware' => ['json.response']], function () {
         // Employee accepts call
         Route::get('/call/accept/{call}', 'Api\CallController@acceptCall');
 
+        // Employee ends call
+        Route::get('/call/end/{call}', 'Api\CallController@endCall');
+
         // Test authentication
         Route::get('/auth/test', function (Request $request)
         {
